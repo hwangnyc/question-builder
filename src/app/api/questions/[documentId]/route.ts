@@ -1,6 +1,8 @@
 import { NextRequest } from 'next/server';
 import { getDb } from '@/lib/db';
 
+export const dynamic = 'force-dynamic';
+
 interface DocumentRow {
   id: string;
   filename: string;
