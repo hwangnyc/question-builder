@@ -46,7 +46,7 @@ export default function DocumentDetailPage({ params }: { params: Promise<{ id: s
 
       setProcessResult(
         `Done! ${data.chunks} chunks created, ${data.questions} questions generated.` +
-        (data.errors ? ` (${data.errors.length} warnings)` : "")
+        (data.errors ? `\nErrors:\n${data.errors.join("\n")}` : "")
       );
 
       // Refresh data
@@ -117,7 +117,7 @@ export default function DocumentDetailPage({ params }: { params: Promise<{ id: s
       </div>
 
       {processResult && (
-        <div className="mt-4 bg-green-50 border border-green-200 text-green-700 px-4 py-3 rounded-md text-sm">
+        <div className="mt-4 bg-green-50 border border-green-200 text-green-700 px-4 py-3 rounded-md text-sm whitespace-pre-wrap">
           {processResult}
         </div>
       )}

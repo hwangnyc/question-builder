@@ -98,7 +98,9 @@ export async function POST(
             totalQuestions += questions.length;
           }
         } catch (aiError) {
-          errors.push(`Chunk ${i}: AI generation failed - ${aiError instanceof Error ? aiError.message : 'Unknown error'}`);
+          const msg = aiError instanceof Error ? aiError.message : 'Unknown error';
+          console.error(`Chunk ${i} AI error:`, msg);
+          errors.push(`Chunk ${i}: ${msg}`);
         }
       }
 
