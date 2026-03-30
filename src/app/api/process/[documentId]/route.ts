@@ -37,12 +37,9 @@ export async function POST(
     try {
       // Read PDF from local storage
       const pdfBuffer = readFile(doc.file_path);
-      const pdfData = new Uint8Array(pdfBuffer);
 
       // Extract text
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
-      const parser = new PDFParse(pdfData) as any;
-      await parser.load(pdfData);
+      const parser = new PDFParse({ data: new Uint8Array(pdfBuffer) });
       const textResult = await parser.getText();
       const fullText: string = textResult.text;
 
